@@ -32,5 +32,5 @@ class OscServer:
     def registerCallbacks(self, client):
         for i,loop in enumerate(self.loops):
             #client.send_message("/sl/"+str(i)+"/register_update",["state", "127.0.0.1:9952", "/statusChanged"])
-            client.send_message("/sl/"+str(i)+"/register_auto_update",["loop_pos", 100, "192.168.1.2:9952", "/loopPosChanged"])
-            client.send_message("/sl/"+str(i)+"/register_auto_update",["loop_len", 100, "192.168.1.2:9952", "/loopLenChanged"])
+            client.send_message("/sl/"+str(i)+"/register_auto_update",["loop_pos", 200, "192.168.1.2:9952", "/loopPosChanged"])
+            client.send_message("/sl/"+str(i)+"/register_auto_update",["loop_len", 200, "192.168.1.2:9952", "/loopLenChanged"])
