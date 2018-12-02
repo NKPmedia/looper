@@ -31,9 +31,7 @@ class Loop:
 
     def recordInterrupt(self, gpio, level, tick):
         if(level == 0):
-            print("Pressed Record")
             if self.deleted == 1:
-                print("Record")
                 self.deleted = 0
                 self.oscClient.send_message("/sl/" + str(self.number) + "/hit", "record")
             else:

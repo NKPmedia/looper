@@ -11,7 +11,7 @@ class OscServer:
         dispatchero.map("/loopPosChanged", self.handleLoopPosChange)
         dispatchero.map("/loopLenChanged", self.handleLoopLenChange)
 
-        server = osc_server.ThreadingOSCUDPServer(("127.0.0.1", 9952), dispatchero)
+        server = osc_server.ThreadingOSCUDPServer(("192.168.1.2", 9952), dispatchero)
 
         self.registerCallbacks(client)
 
@@ -32,5 +32,5 @@ class OscServer:
     def registerCallbacks(self, client):
         for i,loop in enumerate(self.loops):
             #client.send_message("/sl/"+str(i)+"/register_update",["state", "127.0.0.1:9952", "/statusChanged"])
-            client.send_message("/sl/"+str(i)+"/register_auto_update",["loop_pos", 100, "127.0.0.1:9952", "/loopPosChanged"])
-            client.send_message("/sl/"+str(i)+"/register_auto_update",["loop_len", 100, "127.0.0.1:9952", "/loopLenChanged"])
+            client.send_message("/sl/"+str(i)+"/register_auto_update",["loop_pos", 100, "192.168.1.2:9952", "/loopPosChanged"])
+            client.send_message("/sl/"+str(i)+"/register_auto_update",["loop_len", 100, "192.168.1.2:9952", "/loopLenChanged"])

@@ -14,6 +14,8 @@ print("Starting Rasp-Looper Interface")
 
 subprocess.Popen(["pigpiod"])
 
+time.sleep(2)
+
 piGpio = pigpio.pi()
 
 lcd = lcd()
@@ -31,7 +33,7 @@ bootscreen.write("Starting Looper")
 sooperlooper = SooperLooper()
 sooperlooper.start()
 
-client = udp_client.SimpleUDPClient("192.168.0.1", 9951)
+client = udp_client.SimpleUDPClient("192.168.1.1", 9951)
 
 sooperlooper.creatLoops(strip, client, piGpio)
 sooperlooper.setDefaultValues(client)
