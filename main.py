@@ -10,6 +10,10 @@ from bootscreen import BootScreen
 from pythonosc import udp_client
 from oscserer import OscServer
 
+lcd = lcd()
+bootscreen = BootScreen(lcd)
+
+bootscreen.write("Starting...", "Rpi-Looper")
 print("Starting Rasp-Looper Interface")
 
 subprocess.Popen(["pigpiod"])
@@ -18,22 +22,19 @@ time.sleep(2)
 
 piGpio = pigpio.pi()
 
-lcd = lcd()
-bootscreen = BootScreen(lcd)
+
 bootscreen.write("Starting UI")
 strip = LedRGBStrip()
 strip.init()
 strip.testStrip()
 
-bootscreen.write("Starting Jack")
-jack = Jack()
-jack.start()
+client = udp_client.SimpleUDPClient("192.168.1.1", 9951)
 
-bootscreen.write("Starting Looper")
 sooperlooper = SooperLooper()
+bootscreen.write("Starting Looper")
 sooperlooper.start()
 
-client = udp_client.SimpleUDPClient("192.168.1.1", 9951)
+
 
 sooperlooper.creatLoops(strip, client, piGpio)
 sooperlooper.setDefaultValues(client)
@@ -46,5 +47,5 @@ bootscreen.write("Ready :D", "Enjoy looping")
 print("Interface started")
 print("Starting to collect data")
 
-oscServer = OscServer();
+oscServer = OscServer()
 oscServer.connect(client, sooperlooper.loops)

@@ -12,14 +12,7 @@ class SooperLooper:
         self.pauseAllPin = 20
 
     def start(self):
-        print("Killing all sooperloopers")
-        #subprocess.run(["killall sooperlooper"], shell=True)
-        print("Starting new sooperlooper")
-        #subprocess.Popen(["sooperlooper -l 3 -c 1"], shell=True)
-        print("Started new sooperlooper")
-
         self.klick = klick()
-
 
     def creatLoops(self, strip, client, piGpio):
         self.loops[0] = Loop(strip, 0, client, self)
