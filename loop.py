@@ -54,6 +54,8 @@ class Loop:
             #         self.oscClient.send_message("/sl/" + str(self.number) + "/hit", "trigger")
             # else:
             self.oscClient.send_message("/sl/" + str(self.number) + "/hit", "mute")
+            if self.status == 10:
+                self.oscClient.send_message("/sl/" + str(self.number) + "/hit", "trigger")
             self.pausePressTime = time.clock()
         elif level == 1:
             releaseTime = time.clock()

@@ -1,9 +1,7 @@
 import pigpio
-from loop import Loop
 import time
 from ledrgbstrip import LedRGBStrip
 from SooperLooper import SooperLooper
-from jack import Jack
 import subprocess
 from I2C_LCD_driver import lcd
 from bootscreen import BootScreen
@@ -29,6 +27,8 @@ strip.init()
 strip.testStrip()
 
 client = udp_client.SimpleUDPClient("192.168.1.1", 9951)
+
+
 
 sooperlooper = SooperLooper()
 bootscreen.write("Starting Looper")
